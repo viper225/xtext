@@ -93,6 +93,64 @@ class RegionAccessTest {
 			17 0 Hidden
 		'''
 	}
+	
+	@Test def void testExpression1() {
+		'''
+			test 5 a + b
+		'''.toString.trim === '''
+			 0 0 Hidden
+			     Start    Add
+			 0 4 Semantic "test" Root:'test'
+			 4 1 Hidden   " " Whitespace:TerminalRule'WS'
+			 5 1 Semantic "5" Root:'5'
+			 6 1 Hidden   " " Whitespace:TerminalRule'WS'
+			     Start    left=Named'a'
+			 7 1 Semantic "a" Primary:name=ID
+			     End      left=Named'a'
+			 8 1 Hidden   " " Whitespace:TerminalRule'WS'
+			 9 1 Semantic "+" Expression:'+'
+			10 1 Hidden   " " Whitespace:TerminalRule'WS'
+			     Start    right=Named'b'
+			11 1 Semantic "b" Primary:name=ID
+			     End      Add, right=Named'b'
+			12 0 Hidden
+		'''
+	}
+	
+	@Test def void testExpression2() {
+		'''
+			test 5 (a + b) + c
+		'''.toString.trim === '''
+			 0 0 Hidden
+			     Start    Add
+			 0 4 Semantic "test" Root:'test'
+			 4 1 Hidden   " " Whitespace:TerminalRule'WS'
+			 5 1 Semantic "5" Root:'5'
+			 6 1 Hidden   " " Whitespace:TerminalRule'WS'
+			     Start    left=Add
+			 7 1 Semantic "(" Parenthesized:'('
+			 8 0 Hidden
+			     Start    left=Named'a'
+			 8 1 Semantic "a" Primary:name=ID
+			     End      left=Named'a'
+			 9 1 Hidden   " " Whitespace:TerminalRule'WS'
+			10 1 Semantic "+" Expression:'+'
+			11 1 Hidden   " " Whitespace:TerminalRule'WS'
+			     Start    right=Named'b'
+			12 1 Semantic "b" Primary:name=ID
+			     End      right=Named'b'
+			13 0 Hidden
+			13 1 Semantic ")" Parenthesized:')'
+			     End      left=Add
+			14 1 Hidden   " " Whitespace:TerminalRule'WS'
+			15 1 Semantic "+" Expression:'+'
+			16 1 Hidden   " " Whitespace:TerminalRule'WS'
+			     Start    right=Named'c'
+			17 1 Semantic "c" Primary:name=ID
+			     End      Add, right=Named'c'
+			18 0 Hidden
+		'''
+	}
 
 	private def ===(CharSequence file, CharSequence expectation) {
 		val obj = parseHelper.parse(file)

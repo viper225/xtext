@@ -23,5 +23,13 @@
     <genClasses ecoreClass="RegionAccessTestLanguage.ecore#//Delegate">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RegionAccessTestLanguage.ecore#//Delegate/name"/>
     </genClasses>
+    <genClasses ecoreClass="RegionAccessTestLanguage.ecore#//Expression"/>
+    <genClasses ecoreClass="RegionAccessTestLanguage.ecore#//Add">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RegionAccessTestLanguage.ecore#//Add/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RegionAccessTestLanguage.ecore#//Add/right"/>
+    </genClasses>
+    <genClasses ecoreClass="RegionAccessTestLanguage.ecore#//Named">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RegionAccessTestLanguage.ecore#//Named/name"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

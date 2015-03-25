@@ -10,8 +10,11 @@ import org.eclipse.emf.ecore.EcorePackage;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
+import org.eclipse.xtext.formatting2.regionaccess.internal.regionaccesstestlanguage.Add;
 import org.eclipse.xtext.formatting2.regionaccess.internal.regionaccesstestlanguage.Delegate;
 import org.eclipse.xtext.formatting2.regionaccess.internal.regionaccesstestlanguage.Delegation;
+import org.eclipse.xtext.formatting2.regionaccess.internal.regionaccesstestlanguage.Expression;
+import org.eclipse.xtext.formatting2.regionaccess.internal.regionaccesstestlanguage.Named;
 import org.eclipse.xtext.formatting2.regionaccess.internal.regionaccesstestlanguage.PrefixedDelegate;
 import org.eclipse.xtext.formatting2.regionaccess.internal.regionaccesstestlanguage.PrefixedUnassigned;
 import org.eclipse.xtext.formatting2.regionaccess.internal.regionaccesstestlanguage.RegionaccesstestlanguageFactory;
@@ -76,6 +79,27 @@ public class RegionaccesstestlanguagePackageImpl extends EPackageImpl implements
    * @generated
    */
   private EClass delegateEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass expressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass addEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass namedEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -258,6 +282,66 @@ public class RegionaccesstestlanguagePackageImpl extends EPackageImpl implements
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getExpression()
+  {
+    return expressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getAdd()
+  {
+    return addEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getAdd_Left()
+  {
+    return (EReference)addEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getAdd_Right()
+  {
+    return (EReference)addEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getNamed()
+  {
+    return namedEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getNamed_Name()
+  {
+    return (EAttribute)namedEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public RegionaccesstestlanguageFactory getRegionaccesstestlanguageFactory()
   {
     return (RegionaccesstestlanguageFactory)getEFactoryInstance();
@@ -300,6 +384,15 @@ public class RegionaccesstestlanguagePackageImpl extends EPackageImpl implements
 
     delegateEClass = createEClass(DELEGATE);
     createEAttribute(delegateEClass, DELEGATE__NAME);
+
+    expressionEClass = createEClass(EXPRESSION);
+
+    addEClass = createEClass(ADD);
+    createEReference(addEClass, ADD__LEFT);
+    createEReference(addEClass, ADD__RIGHT);
+
+    namedEClass = createEClass(NAMED);
+    createEAttribute(namedEClass, NAMED__NAME);
   }
 
   /**
@@ -340,6 +433,9 @@ public class RegionaccesstestlanguagePackageImpl extends EPackageImpl implements
     prefixedUnassignedEClass.getESuperTypes().add(this.getRoot());
     delegateEClass.getESuperTypes().add(this.getUnassigned());
     delegateEClass.getESuperTypes().add(this.getPrefixedDelegate());
+    expressionEClass.getESuperTypes().add(this.getRoot());
+    addEClass.getESuperTypes().add(this.getExpression());
+    namedEClass.getESuperTypes().add(this.getExpression());
 
     // Initialize classes and features; add operations and parameters
     initEClass(rootEClass, Root.class, "Root", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -359,6 +455,15 @@ public class RegionaccesstestlanguagePackageImpl extends EPackageImpl implements
 
     initEClass(delegateEClass, Delegate.class, "Delegate", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getDelegate_Name(), theEcorePackage.getEString(), "name", null, 0, 1, Delegate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(expressionEClass, Expression.class, "Expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(addEClass, Add.class, "Add", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getAdd_Left(), this.getExpression(), null, "left", null, 0, 1, Add.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAdd_Right(), this.getExpression(), null, "right", null, 0, 1, Add.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(namedEClass, Named.class, "Named", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getNamed_Name(), theEcorePackage.getEString(), "name", null, 0, 1, Named.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);
